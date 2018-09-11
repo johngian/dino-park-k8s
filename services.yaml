@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dino-park-frontend-service
+spec:
+  selector:
+    app: dino-park-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dino-park-search-service
+spec:
+  selector:
+    app: dino-park-search
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dino-cave-service
+spec:
+  selector:
+    app: dino-cave
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8888
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iam-profile-faker-service
+spec:
+  selector:
+    app: iam-profile-faker
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000

@@ -1,0 +1,94 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dino-park-frontend-deployment
+  labels:
+    app: dino-park-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dino-park-frontend
+  template:
+    metadata:
+      labels:
+        app: dino-park-frontend
+    spec:
+      containers:
+        - name: dino-park-frontend
+          image: mozillaparsys/dino-park-frontend:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dino-park-search-deployment
+  labels:
+    app: dino-park-search
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dino-park-search
+  template:
+    metadata:
+      labels:
+        app: dino-park-search
+    spec:
+      containers:
+        - name: dino-park-search
+          image: mozillaparsys/dino-park-search:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SECRET_KEY
+              value: unique-snowflake
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dino-cave-deployment
+  labels:
+    app: dino-cave
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dino-cave
+  template:
+    metadata:
+      labels:
+        app: dino-cave
+    spec:
+      containers:
+        - name: dino-cave
+          image: mozillaparsys/dino-cave:latest
+          ports:
+            - containerPort: 8888
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iam-profile-faker-deployment
+  labels:
+    app: iam-profile-faker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iam-profile-faker
+  template:
+    metadata:
+      labels:
+        app: iam-profile-faker
+    spec:
+      containers:
+        - name: iam-profile-faker
+          image: mozillaparsys/iam-profile-faker:latest
+          ports:
+            - containerPort: 5000
